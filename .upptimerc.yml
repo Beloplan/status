@@ -1,0 +1,40 @@
+owner: Beloplan
+repo: status
+
+sites:
+  - name: Beloplan web app
+    url: https://www.beloplan.be/
+  - name: Beloplan API (web and phone app)
+    url: https://www.beloplan.be/api/v1/ping
+  - name: Files (photos and documents)
+    url: https://files.beloplan.be/
+    expectedStatusCodes:
+      - 403
+
+status-website:
+  cname: status.beloplan.be
+  logoUrl: https://status.beloplan.be/beloplan-icon.svg
+  favicon: https://status.beloplan.be/beloplan-icon.svg
+  themeUrl: https://status.beloplan.be/beloplan.css
+  # Upptime hard-codes an emoji in front of the overall status line; Beloplan never shows emoji.
+  js: |
+    new MutationObserver(function(){document.querySelectorAll('article').forEach(function(a){var n=a.firstChild;if(n&&n.nodeType===3&&/^[\u2600-\u27BF\uD83C-\uDBFF\uDC00-\uDFFF\s]+$/.test(n.nodeValue)){n.nodeValue='';}});}).observe(document.documentElement,{childList:true,subtree:true});
+    (function(){
+    var root=document.documentElement;
+    try{var t=localStorage.getItem("bp-theme");if(t==="light"||t==="dark")root.setAttribute("data-theme",t);}catch(e){}
+    var s=document.createElement("script");s.src="https://status.beloplan.be/status.js";s.defer=true;document.head.appendChild(s);
+    })();
+  name: Beloplan status
+  introTitle: "Beloplan status"
+  introMessage: "Live availability of Beloplan, with planned maintenance and past incidents. Maintenance is announced here at least 7 days ahead. For notices by email, write to status@beloplan.be. Need help? See https://www.beloplan.be/support"
+  navbar:
+    - title: Status
+      href: /
+    - title: Support
+      href: https://www.beloplan.be/support
+    - title: Security
+      href: https://www.beloplan.be/security
+
+# Plain text, no emoji: the Beloplan UI never uses emoji.
+i18n:
+  liveStatus: "Live status"
